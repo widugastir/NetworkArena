@@ -46,6 +46,6 @@ public class PlayerMovement : MonoBehaviour, IPunObservable
 			//transform.Translate(Vector3.up * Time.deltaTime * -_speed);
 		}
 		
-		transform.position = _position;
+		transform.position = Vector3.Lerp(transform.position, _position, Time.deltaTime * 3f);
     }
 }
