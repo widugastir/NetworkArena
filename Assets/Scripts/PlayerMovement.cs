@@ -23,6 +23,10 @@ public class PlayerMovement : MonoBehaviour, IPunObservable
 	private void Start()
 	{
 		_photonView = GetComponent<PhotonView>();
+		if(_photonView.IsMine)
+		{
+			_position = transform.position;
+		}
 	}
 	
 	private void Update()
@@ -30,22 +34,18 @@ public class PlayerMovement : MonoBehaviour, IPunObservable
 		if(_photonView.IsMine)
 		{
 			if(Input.GetKey(KeyCode.D))
-				_position = transform.position + Vector3.right * Time.deltaTime * _speed;
-		    	//transform.Translate(Vector3.right * Time.deltaTime * _speed);
+				_position += Vector3.right * Time.deltaTime * _speed;
 		    	
 		    if(Input.GetKey(KeyCode.A))
-			    _position = transform.position + Vector3.right * Time.deltaTime * -_speed;
-			//transform.Translate(Vector3.right * Time.deltaTime * -_speed);
+			    _position += Vector3.right * Time.deltaTime * -_speed;
 		    	
 		    if(Input.GetKey(KeyCode.W))
-			    _position = transform.position + Vector3.up * Time.deltaTime * _speed;
-			//transform.Translate(Vector3.up * Time.deltaTime * _speed);
+			    _position += Vector3.up * Time.deltaTime * _speed;
 		    	
 		    if(Input.GetKey(KeyCode.S))
-			    _position = transform.position + Vector3.up * Time.deltaTime * -_speed;
-			//transform.Translate(Vector3.up * Time.deltaTime * -_speed);
+			    _position += Vector3.up * Time.deltaTime * -_speed;
 		}
 		
-		transform.position = Vector3.Lerp(transform.position, _position, Time.deltaTime * 3f);
+		transform.position = Vector3.Lerp(transform.position, _position, Time.deltaTime * 6f);
     }
 }
