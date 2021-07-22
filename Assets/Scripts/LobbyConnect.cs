@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
@@ -11,7 +11,7 @@ public class LobbyConnect : MonoBehaviourPunCallbacks
 {
     public void Start()
     {
-        PhotonNetwork.NickName = "Player" + Random.Range(-999f, 999f);
+	    PhotonNetwork.NickName = "Player" + Random.Range(0, 5000);
         PhotonNetwork.AutomaticallySyncScene = true;
         PhotonNetwork.GameVersion = "1";
         PhotonNetwork.ConnectUsingSettings();
@@ -22,11 +22,7 @@ public class LobbyConnect : MonoBehaviourPunCallbacks
         //PhotonNetwork.ConnectUsingSettings();
         //PhotonNetwork.JoinRoom("someRoom");
         Debug.Log("OnConnectedToMaster() was called by PUN.");
-
-
-
-        
-        //PhotonNetwork.JoinOrCreateRoom(nameEveryFriendKnows, roomOptions, TypedLobby.Default);
+		//PhotonNetwork.JoinOrCreateRoom(nameEveryFriendKnows, roomOptions, TypedLobby.Default);
     }
 
 
@@ -43,9 +39,14 @@ public class LobbyConnect : MonoBehaviourPunCallbacks
         PhotonNetwork.JoinRandomRoom();
     }
     
-    public override void OnLeftRoom()
+	public void LeaveRoom()
+	{
+		PhotonNetwork.LeaveRoom();
+	}
+    
+	public override void OnJoinedRoom()
     {
-        
+	    PhotonNetwork.LoadLevel("Game");
     }
     
     public override void OnPlayerLeftRoom(Player otherPlayer)
