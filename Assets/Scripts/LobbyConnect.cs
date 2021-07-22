@@ -33,7 +33,7 @@ public class LobbyConnect : MonoBehaviourPunCallbacks
     public void CreatedRoom()
     {
         RoomOptions roomOptions = new RoomOptions();
-        roomOptions.IsVisible = false;
+        roomOptions.IsVisible = true;
         roomOptions.MaxPlayers = 4;
         PhotonNetwork.CreateRoom(null, roomOptions);
     }
