@@ -122,3 +122,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 5
   _photonView: {fileID: 4257421973626069914}
+  _renderer: {fileID: 6788583127350108751}
