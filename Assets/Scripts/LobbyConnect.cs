@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
@@ -19,10 +17,7 @@ public class LobbyConnect : MonoBehaviourPunCallbacks
 
     public override void OnConnectedToMaster()
     {
-        //PhotonNetwork.ConnectUsingSettings();
-        //PhotonNetwork.JoinRoom("someRoom");
         Debug.Log("OnConnectedToMaster() was called by PUN.");
-		//PhotonNetwork.JoinOrCreateRoom(nameEveryFriendKnows, roomOptions, TypedLobby.Default);
     }
 
 
